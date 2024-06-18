@@ -20,16 +20,17 @@ def save_image():
 
 
 img = Image.open(select_image())
-flip_img = img.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
 
-if 'exif' in flip_img.info:
-    exif_dict = piexif.load(flip_img.info['exif'])
+if 'exif' in img.info:
+    exif_dict = piexif.load(img.info['exif'])
     exif_dict.clear()
     exif_bytes = piexif.dump(exif_dict)
 else:
     exif_bytes = piexif.dump({})
-
+    
 image_path = save_image()
+
+flip_img = img.transpose(Image.Transpose.TRANSPOSE)
 
 flip_img.save(image_path)
 
