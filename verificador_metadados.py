@@ -6,6 +6,7 @@ from tkinter import Tk, filedialog
 def convert_to_decimal(degrees, minutes, seconds):
     return degrees + (minutes / 60) + (seconds / 3600)
 
+
 def get_decimal_coordinates(gps_data):
     # Latitude
     latitude = gps_data[2]
@@ -59,17 +60,16 @@ if 'exif' in img.info:
             print("Imagem salva com sucesso.")
     else:
         print("Miniatura não encontrada.")
-        
-# Obtém os dados de GPS
+
+    # Obtém os dados de GPS
     gps_data = exif_dict['GPS']
-    
+
     if gps_data:
         latitude, longitude = get_decimal_coordinates(gps_data)
         print(f"Latitude: {latitude}")
         print(f"Longitude: {longitude}")
     else:
         print("Não foram encontrados dados de GPS na imagem.")
-
 
     for ifd_name in exif_dict:
         print(f"\n{ifd_name} IFD:")
@@ -81,4 +81,3 @@ if 'exif' in img.info:
                 print(f"{tag_name}: {exif_dict[ifd_name][tag]}")
 else:
     print("Dados Exif não encontrados.")
-    
