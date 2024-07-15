@@ -30,8 +30,8 @@ else:
     
 image_path = save_image()
 
-flip_img = img.transpose(Image.Transpose.TRANSPOSE)
+#flip_img = img.transpose(Image.Transpose.TRANSPOSE)
 
-flip_img.save(image_path)
+img.save(image_path)
 
 print("Dados apagados com sucesso.")

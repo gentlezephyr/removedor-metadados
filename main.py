@@ -1,4 +1,5 @@
 from tkinter import Tk, filedialog
+
 root = Tk()
 
 match_case = int(input("Write 1 to verify or 2 to remove the exif data!"))
