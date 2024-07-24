@@ -2,11 +2,11 @@ import piexif
 from PIL import Image
 
 from scripts import save_image
-from scripts.get_image import image_path
+from scripts.get_image import select_image
 
 
 def removedor():
-    img = Image.open(image_path)
+    img = Image.open(select_image())
 
     if 'exif' in img.info:
         exif_dict = piexif.load(img.info['exif'])
@@ -20,4 +20,5 @@ def removedor():
     print("Dados apagados com sucesso.")
 
 
-removedor()
+if __name__ == '__main__':
+    removedor()

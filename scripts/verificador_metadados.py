@@ -1,12 +1,11 @@
 import piexif
 from PIL import Image
 
-from scripts.get_image import image_path
+from scripts.get_image import select_image
 
 
 def verificar():
-
-    img = Image.open(image_path)
+    img = Image.open(select_image())
     exif_dict = {}
 
     if 'exif' in img.info:
@@ -34,4 +33,5 @@ def verificar():
         print("Dados Exif não encontrados.")
 
 
-verificar()
+if __name__ == '__main__':
+    verificar()

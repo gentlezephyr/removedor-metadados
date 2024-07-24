@@ -1,12 +1,11 @@
 import piexif
 from PIL import Image
 
-from scripts.get_image import image_path
+from scripts.get_image import select_image
 
 
 def localizador():
-
-    img = Image.open(image_path)
+    img = Image.open(select_image())
     exif_dict = {}
 
     if 'exif' in img.info:
@@ -23,8 +22,10 @@ def localizador():
 
     if gps_info:
         latitude, longitude = get_decimal_coordinates(gps_info)
-        print(f"Latitude: {latitude}")
-        print(f"Longitude: {longitude}")
+        latitude_dms = decimal_to_dms(latitude, is_latitude=True)
+        longitude_dms = decimal_to_dms(longitude, is_latitude=False)
+        print(f"Latitude: {latitude_dms}")
+        print(f"Longitude: {longitude_dms}")
     else:
         print("Não foram encontrados dados de GPS na imagem.")
 
@@ -56,4 +57,22 @@ def get_decimal_coordinates(gps_data):
 
     return latitude_decimal, longitude_decimal
 
-localizador()
+
+def decimal_to_dms(decimal, is_latitude):
+    is_positive = decimal >= 0
+    decimal = abs(decimal)
+    degrees = int(decimal)
+    minutes = int((decimal - degrees) * 60)
+    seconds = (decimal - degrees - minutes / 60) * 3600
+
+    direction = ''
+    if is_latitude:
+        direction = 'N' if is_positive else 'S'
+    else:
+        direction = 'E' if is_positive else 'W'
+
+    return f"{degrees}°{minutes}'{seconds:.1f}\"{direction}"
+
+
+if __name__ == '__main__':
+    localizador()

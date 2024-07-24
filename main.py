@@ -1,27 +1,19 @@
-from tkinter import Tk, filedialog
-
-root = Tk()
-
-match_case = int(input("Write 1 to verify, 2 to remove the exif data and 3 to get location: "))
+import subprocess
 
 
 def main():
+    match_case = int(input("Write 1 to verify, 2 to remove the exif data and 3 to get location: "))
+
     match match_case:
         case 1:
             print("Verifying!")
-            with open("scripts/verificador_metadados.py", "r") as file:
-                verify_script = file.read()
-            exec(verify_script)
+            subprocess.run(["python", "scripts/verificador_metadados.py"])
         case 2:
             print("Removing!")
-            with open("scripts/removedor_metadados.py", "r") as file:
-                remove_script = file.read()
-            exec(remove_script)
+            subprocess.run(["python", "scripts/removedor_metadados.py"])
         case 3:
             print("Locating!")
-            with open("scripts/localizador.py", "r") as file:
-                locate_script = file.read()
-            exec(locate_script)
+            subprocess.run(["python", "scripts/localizador.py"])
         case _:
             print("Invalid option!")
 

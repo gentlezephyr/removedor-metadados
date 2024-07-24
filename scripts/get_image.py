@@ -6,7 +6,9 @@ def select_image():
     root.withdraw()
     file_path = filedialog.askopenfilename(title="Selecione uma imagem",
                                            filetypes=[("Imagens", "*.jpg;*.jpeg;*.webp;*.tiff")])
+
     return file_path
 
 
-image_path = select_image()
+if __name__ == '__main__':
+    print(select_image())
