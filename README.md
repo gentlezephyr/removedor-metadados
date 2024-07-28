@@ -22,8 +22,8 @@ Este projeto tem como objetivo fornecer ferramentas para manipulação de metada
 1. Clone o repositório:
 
     ```sh
-    git clone https://github.com/seuusuario/removedor-de-metadados.git
-    cd removedor-de-metadados
+    git clone https://github.com/gentlezephyr/removedor-metadados.git
+    cd removedor-metadados
     ```
 
 2. Crie um ambiente virtual (opcional, mas recomendado):
