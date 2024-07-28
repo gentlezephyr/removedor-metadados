@@ -36,7 +36,7 @@ Este projeto tem como objetivo fornecer ferramentas para manipulação de metada
 3. Instale as dependências:
 
     ```sh
-    pip install Pillow piexif
+    pip install pillow piexif
     ```
 
 ## Uso
