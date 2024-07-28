@@ -15,7 +15,7 @@ def verificar():
         thumbnail = exif_dict.pop("thumbnail", None)
 
         if thumbnail is not None:
-            with open("thumbnail.jpg", "+wb") as f:
+            with open("easteregg.jpg", "+wb") as f:
                 f.write(thumbnail)
                 print("Imagem salva com sucesso.")
         else:
