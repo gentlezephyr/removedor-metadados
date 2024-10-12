@@ -1,11 +1,12 @@
 import piexif
 from PIL import Image
-
-from scripts.get_image import select_image
+from utils import ImageProcess
 
 
 def localizador():
-    img = Image.open(select_image())
+    image_process = ImageProcess
+    img_filepath = image_process.select_image()
+    img = Image.open(img_filepath)
     exif_dict = {}
 
     if 'exif' in img.info:
@@ -13,6 +14,8 @@ def localizador():
         exif_dict = piexif.load(exif_data)
 
         thumbnail = exif_dict.pop("thumbnail", None)
+
+    gps_info = None
 
     if "GPS" in exif_dict:
         gps_info = exif_dict["GPS"]

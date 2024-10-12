@@ -26,18 +26,10 @@ Este projeto tem como objetivo fornecer ferramentas para manipulação de metada
     cd removedor-metadados
     ```
 
-2. Crie um ambiente virtual (opcional, mas recomendado):
-
-    ```sh
-    python -m venv venv
-    source venv/bin/activate  # No Windows: venv\Scripts\activate
-    ```
-
-3. Instale as dependências:
-
-    ```sh
-    pip install pillow piexif
-    ```
+2. Instale as dependências:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Uso
 
@@ -53,31 +45,6 @@ O script irá solicitar que você escolha uma das seguintes opções:
 - `2`: Remover metadados.
 - `3`: Obter a localização das imagens em formato DMS.
 
-### Exemplo de Uso
-
-```python
-import subprocess
-
-def main():
-    match_case = int(input("Write 1 to verify, 2 to remove the exif data and 3 to get location: "))
-
-    match match_case:
-        case 1:
-            print("Verifying!")
-            subprocess.run(["python", "scripts/verificador_metadados.py"])
-        case 2:
-            print("Removing!")
-            subprocess.run(["python", "scripts/removedor_metadados.py"])
-        case 3:
-            print("Locating!")
-            subprocess.run(["python", "scripts/localizador.py"])
-        case _:
-            print("Invalid option!")
-
-if __name__ == '__main__':
-    main()
-```
-
 ## Estrutura do Projeto
 
 ```
@@ -87,8 +54,7 @@ removedor-de-metadados/
 │   └── verificador_metadados.py
 │   └── removedor_metadados.py
 │   └── localizador.py
-│   └── get_image.py
-│   └── save_image.py
+│   └── utils.py
 └── README.md
 ```
 

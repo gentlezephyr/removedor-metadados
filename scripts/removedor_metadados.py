@@ -1,12 +1,12 @@
 import piexif
 from PIL import Image
-
-from scripts import save_image
-from scripts.get_image import select_image
+from utils import ImageProcess
 
 
 def removedor():
-    img = Image.open(select_image())
+    image_process = ImageProcess
+    img_path = image_process.select_image()
+    img = Image.open(img_path)
 
     if 'exif' in img.info:
         exif_dict = piexif.load(img.info['exif'])
@@ -15,7 +15,7 @@ def removedor():
     else:
         exif_bytes = piexif.dump({})
 
-    save_image.save(img, exif_bytes)
+    image_process.save_image(img, exif_bytes)
 
     print("Dados apagados com sucesso.")
 

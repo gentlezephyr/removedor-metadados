@@ -1,11 +1,12 @@
 import piexif
 from PIL import Image
-
-from scripts.get_image import select_image
+from utils import ImageProcess
 
 
 def verificar():
-    img = Image.open(select_image())
+    image_process = ImageProcess
+    img_path = image_process.select_image()
+    img = Image.open(img_path)
     exif_dict = {}
 
     if 'exif' in img.info:
